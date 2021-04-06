@@ -1,0 +1,13 @@
+@import './scss/page.scss';
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+}
