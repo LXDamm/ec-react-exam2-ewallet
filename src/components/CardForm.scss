@@ -1,0 +1,38 @@
+.card-form label {
+    text-transform: uppercase;
+    font-size: 0.6em;
+}
+
+.card-form-cardnumber,
+.card-form-cardholder,
+.card-form-validdate,
+.card-form-ccv,
+.card-form-vendor {
+    display: block;
+    width: 100%;
+}
+
+.card-form-validdate,
+.card-form-ccv {
+    display: inline-block;
+    width: 50%;
+}
+
+.card-form-cardnumber input,
+.card-form-cardholder input,
+.card-form-validdate input,
+.card-form-ccv input,
+.card-form-vendor input {
+    display: inline-block;
+    width: 100%;
+}
+
+.add-card-button {
+    align-self: flex-end;
+    margin-top: auto;
+    bottom: 10px;
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 4px;
+}

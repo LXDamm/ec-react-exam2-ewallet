@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 import CardStack from '../components/CardStack';
 import './Cards.scss';
@@ -9,7 +11,7 @@ export default function Cards() {
             <p>Active Card</p>
             <Card />
             <CardStack />
-            <button className="add-card-button">Add a new Card</button>
+            <Link to="/addcard" className="add-card-link"><button className="add-card-button">Add a new Card</button></Link>
         </>
     );
 }
