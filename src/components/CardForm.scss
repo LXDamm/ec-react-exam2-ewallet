@@ -5,14 +5,14 @@
 
 .card-form-cardnumber,
 .card-form-cardholder,
-.card-form-validdate,
+.card-form-validthru,
 .card-form-ccv,
 .card-form-vendor {
     display: block;
     width: 100%;
 }
 
-.card-form-validdate,
+.card-form-validthru,
 .card-form-ccv {
     display: inline-block;
     width: 50%;
@@ -20,7 +20,7 @@
 
 .card-form-cardnumber input,
 .card-form-cardholder input,
-.card-form-validdate input,
+.card-form-validthru input,
 .card-form-ccv input,
 .card-form-vendor input {
     display: inline-block;
