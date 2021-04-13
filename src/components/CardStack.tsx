@@ -12,8 +12,7 @@ function CardStack(props: any) {
     const cardList = props.cards.filter((item: ICard) => {
         return item.cardNumber !== activeCardNumber;
     }).map((filteredItem: ICard, index: any) => {
-        return <li key={filteredItem.toString()} className={`card-wrapper card-offset-${index}`} onClick={() => handleClick(filteredItem.cardNumber)}><Card cardNumber={filteredItem.cardNumber} cardHolder={filteredItem.cardHolder} validThru={filteredItem.validThru as ValidDate} ccv={filteredItem.ccv} cardVendor={filteredItem.vendor} />
-            </li>
+        return (<li key={filteredItem.toString()} className={`card-wrapper card-offset-${index}`} onClick={() => handleClick(filteredItem.cardNumber)}><Card cardNumber={filteredItem.cardNumber} cardHolder={filteredItem.cardHolder} validThru={filteredItem.validThru as ValidDate} ccv={filteredItem.ccv} cardVendor={filteredItem.vendor} /></li>);
     });
     const handleClick = (cardNumber: string) => {
         dispatch(setActiveCard(cardNumber));

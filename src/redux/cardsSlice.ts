@@ -6,7 +6,7 @@ const cardsSlice = createSlice({
     initialState: {
         cards: [
             {
-                cardNumber: '999999999999999',
+                cardNumber: '9999999999999999',
                 cardHolder: 'Greg Egan',
                 validThru: { year: 2028, month: 4 } as ValidDate,
                 ccv: 987,
@@ -14,7 +14,7 @@ const cardsSlice = createSlice({
             }
         ],
         maxCards: 4,
-        activeCardNumber: '999999999999999'
+        activeCardNumber: '9999999999999999'
     },
     reducers: {
         addCard: (state, action) => {
