@@ -56,6 +56,7 @@ export default function CardForm() {
                     <p>Cardholder name</p>
                     <input required type="text" pattern="[a-zA-Z ]{3,40}" placeholder="FIRSTNAME LASTNAME" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCardHolderChange(event)} />
                 </label>
+                <span>
                 <label className="card-form-validthru">
                     <p>Valid thru</p>
                     <input required type="date" onChange={(event: ChangeEvent<HTMLInputElement>) => handleValidThruChange(event)} />
@@ -64,6 +65,7 @@ export default function CardForm() {
                     <p>CCV</p>
                     <input required type="text" pattern="[0-9]{3,4}" placeholder="XXX" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCcvChange(event)} />
                 </label>
+                </span>
                 <label className="card-form-vendor">
                     <p>Vendor</p>
                     <select required defaultValue="dogecoin" onChange={(event: ChangeEvent<HTMLSelectElement>) => handleVendorChange(event)}>

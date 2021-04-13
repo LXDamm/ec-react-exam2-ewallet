@@ -32,12 +32,13 @@ export default function Cards() {
             <h1>E-Wallet</h1>
             <p>Active Card</p>
             {activeCard
-                ? <><Card cardNumber={activeCard.cardNumber} cardHolder={activeCard.cardHolder} validThru={activeCard.validThru as ValidDate} ccv={activeCard.ccv} cardVendor={activeCard.vendor} />
-            <button className="delete-active-card-button" onClick={() => handleDeleteActiveCard()}>Delete active Card</button></>
+                ? <><Card cardNumber={activeCard.cardNumber} cardHolder={activeCard.cardHolder} validThru={activeCard.validThru as ValidDate} ccv={activeCard.ccv} cardVendor={activeCard.vendor} /><button className="delete-active-card-button" onClick={() => handleDeleteActiveCard()}>Delete active Card</button></>
                 : <p>No active card</p>
             }
             <CardStack cards={cards} />
-            <Link to="/addcard" className="add-card-link"><button className="add-card-button">Add a new Card</button></Link>
+            {cards.length < 4 &&
+                <Link to="/addcard" className="add-card-link"><button className="add-card-button">Add a new Card</button></Link>
+            }
         </>
     );
 }

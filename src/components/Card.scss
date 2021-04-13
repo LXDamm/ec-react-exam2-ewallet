@@ -8,9 +8,13 @@
     background-position: 20px 50px;
     background-size: 60px 40px;
     background-repeat: no-repeat;
+    border: 1px solid black;
 }
 
-.card-cardnumber p {
+.card-cardnumber span p {
+    display: inline-block;
+    padding-left: 6px;
+    padding-right: 6px;
     text-align: center;
 }
 

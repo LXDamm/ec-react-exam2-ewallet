@@ -5,7 +5,12 @@ export default function Card(props: any) {
     return (
         <div className={`Card ${cardVendor}`}>
             <div className="card-cardnumber">
-                <p>{cardNumber}</p>
+                <span>
+                    <p>{cardNumber.substr(0, 4)}</p>
+                    <p>{cardNumber.substr(4, 4)}</p>
+                    <p>{cardNumber.substr(8, 4)}</p>
+                    <p>{cardNumber.substr(12, 4)}</p>
+                </span>
             </div>
             <div className="card-cardholder">
                 <p>Cardholder name</p>
