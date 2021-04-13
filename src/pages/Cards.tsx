@@ -20,7 +20,7 @@ export default function Cards() {
         <>
             <h1>E-Wallet</h1>
             <p>Active Card</p>
-            <Card cardNumber={activeCard?.cardNumber} cardHolder={activeCard?.cardHolder} validThru={activeCard?.validThru as ValidDate} ccv={activeCard?.ccv} cardVendor={activeCard?.cardVendor} />
+            <Card cardNumber={activeCard?.cardNumber} cardHolder={activeCard?.cardHolder} validThru={activeCard?.validThru as ValidDate} ccv={activeCard?.ccv} cardVendor={activeCard?.vendor} />
             <CardStack cards={cards} />
             <Link to="/addcard" className="add-card-link"><button className="add-card-button">Add a new Card</button></Link>
         </>

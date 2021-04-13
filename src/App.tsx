@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import './App.scss';
 import AddCard from './pages/AddCard';
@@ -20,6 +21,7 @@ function App() {
               <Route path="/addcard">
                 <AddCard />
               </Route>
+              <Redirect from="/" to="/cards" />
             </Switch>
           </div>
         </div>

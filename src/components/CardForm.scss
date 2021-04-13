@@ -25,6 +25,8 @@
 .card-form-vendor input {
     display: inline-block;
     width: 100%;
+    height: 20px;
+    padding: 10px 20px;
 }
 
 .add-card-button {
@@ -35,4 +37,16 @@
     height: fit-content;
     padding: 20px;
     border-radius: 4px;
+}
+
+input:valid {
+    height: 20px;
+    background: url(../assets/check.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+input:invalid {
+    height: 20px;
+    background-color: grey;
 }

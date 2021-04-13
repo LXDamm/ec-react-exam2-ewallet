@@ -5,7 +5,7 @@ import Card from './Card';
 
 function CardStack(props: any) {
     const dispatch = useDispatch();
-    const handleClick = (cardNumber: number) => {
+    const handleClick = (cardNumber: string) => {
         dispatch(setActiveCard(cardNumber));
     }
     return (
@@ -13,7 +13,7 @@ function CardStack(props: any) {
             {
                 props.cards.map((item: ICard) => {
                     return <>
-                        <div onClick={() => { handleClick(item.cardNumber) }}><Card cardNumber={item?.cardNumber} cardHolder={item?.cardHolder} validThru={item?.validThru as ValidDate} ccv={item?.ccv} cardVendor={item?.cardVendor} />
+                        <div onClick={() => { handleClick(item.cardNumber) }}><Card cardNumber={item?.cardNumber} cardHolder={item?.cardHolder} validThru={item?.validThru as ValidDate} ccv={item?.ccv} cardVendor={item?.vendor} />
                         </div>
                     </>
                 })

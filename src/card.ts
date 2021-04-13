@@ -6,10 +6,10 @@ export type ValidDate = {
 }
 
 export interface ICard {
-    cardNumber: number;
+    cardNumber: string;
     cardHolder: string;
     validThru: ValidDate;
     ccv: number;
-    cardVendor: Vendor;
+    vendor: Vendor;
     isActive: boolean;
 }
