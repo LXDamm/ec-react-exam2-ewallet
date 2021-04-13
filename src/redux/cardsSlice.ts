@@ -25,7 +25,6 @@ const cardsSlice = createSlice({
             }
         },
         setActiveCard: (state, action) => {
-            console.log(action.payload);
             state.activeCardNumber = action.payload; 
         },
         deleteActiveCard: (state) => {

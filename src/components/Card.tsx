@@ -4,6 +4,12 @@ export default function Card(props: any) {
     const { cardNumber, cardHolder, validThru, cardVendor } = props;
     return (
         <div className={`Card ${cardVendor}`}>
+            <div className="card-vendor">
+                <p>{cardVendor}</p>
+            </div>
+            <div className="card-chip-wrapper">
+                <div className="card-chip"  />
+            </div>
             <div className="card-cardnumber">
                 <span>
                     <p>{cardNumber.substr(0, 4)}</p>

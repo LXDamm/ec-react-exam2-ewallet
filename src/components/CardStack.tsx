@@ -9,21 +9,18 @@ function CardStack(props: any) {
     const activeCardNumber = typedUseSelector((state: AppState) => {
         return state.cardsStack.activeCardNumber;
     });
+    const cardList = props.cards.filter((item: ICard) => {
+        return item.cardNumber !== activeCardNumber;
+    }).map((filteredItem: ICard, index: any) => {
+        return <li key={filteredItem.toString()} className={`card-wrapper card-offset-${index}`} onClick={() => handleClick(filteredItem.cardNumber)}><Card cardNumber={filteredItem.cardNumber} cardHolder={filteredItem.cardHolder} validThru={filteredItem.validThru as ValidDate} ccv={filteredItem.ccv} cardVendor={filteredItem.vendor} />
+            </li>
+    });
     const handleClick = (cardNumber: string) => {
         dispatch(setActiveCard(cardNumber));
-    }
+    };
     return (
         <ul className="card-stack">
-            {
-                props.cards.filter((item: ICard) => {
-                    return item.cardNumber !== activeCardNumber;
-                }).map((filteredItem: ICard, i: any) => {
-                    return <>
-                        <li key={i} className={`card-wrapper card-offset-${i}`} onClick={() => handleClick(filteredItem.cardNumber) }><Card cardNumber={filteredItem?.cardNumber} cardHolder={filteredItem?.cardHolder} validThru={filteredItem?.validThru as ValidDate} ccv={filteredItem?.ccv} cardVendor={filteredItem?.vendor} />
-                        </li>
-                    </>
-                })
-            }
+            {cardList}
         </ul>
     );
 }
