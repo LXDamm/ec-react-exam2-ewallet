@@ -1,40 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICard, ValidDate } from '../card';
-import { AppState } from './store';
+import { ICard, ValidDate, Vendor } from '../card';
 
 const cardsSlice = createSlice({
     name: 'cards',
     initialState: {
         cards: [
             {
-                cardNumber: 999999999999999,
+                cardNumber: '999999999999999',
                 cardHolder: 'Greg Egan',
                 validThru: { year: 2028, month: 4 } as ValidDate,
                 ccv: 987,
-                cardVendor: 'bitcoin',
-                isActive: true
+                vendor: 'bitcoin' as Vendor
             }
         ],
-        maxCards: 4
+        maxCards: 4,
+        activeCardNumber: '999999999999999'
     },
     reducers: {
         addCard: (state, action) => {
             if (state.cards.length < state.maxCards) {
-                state.cards.push(action.payload);
+                let card = action.payload as ICard;
+                state.cards.push(card);
+                state.activeCardNumber = card.cardNumber;
             }
         },
         setActiveCard: (state, action) => {
+            console.log(action.payload);
+            state.activeCardNumber = action.payload; 
+        },
+        deleteActiveCard: (state) => {
             const index = state.cards.findIndex((item) => {
-                return item.isActive === true;
+                return item.cardNumber === state.activeCardNumber;
             });
-            state.cards[index].isActive = false;
-            const activeIndex = state.cards.findIndex((item) => {
-                return item.cardNumber === action.payload;
-            });
-            state.cards[activeIndex].isActive = true;
+            state.cards.splice(index, 1);
+            if (state.cards.length) state.activeCardNumber = state.cards[0].cardNumber;
         }
     }
 });
 
-export const { addCard, setActiveCard } = cardsSlice.actions;
+export const { addCard, setActiveCard, deleteActiveCard } = cardsSlice.actions;
 export default cardsSlice.reducer;

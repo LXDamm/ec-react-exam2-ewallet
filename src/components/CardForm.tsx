@@ -9,21 +9,29 @@ import './CardForm.scss';
 export default function CardForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [card, setCard] = useState<ICard>({ cardNumber: '', cardHolder: '', validThru: { year: 0, month: 0 }, ccv: 0, vendor: undefined, isActive: false});
-    const [cardValidator, setCardValidator] = useState({ cardNumber: false, cardHolder: false, validThru: false, ccv: false, vendor: false});
-    /*const isValidCard = (card: ICard) => {
-        if (card.cardNumber.length == 15) {
-            setCardValidator({...cardValidator, cardNumber: true});
-        } else {
-            setCardValidator({...cardValidator, cardNumber: false});
-            return false;
-        }
-        if (card.cardHolder.length < 3 && card.cardHolder.length > 40) return false;
+    const [card, setCard] = useState<ICard>({ cardNumber: '', cardHolder: '', validThru: { year: 0, month: 0 }, ccv: 0, vendor: 'dogecoin' });
+    const isValidCard = (card: ICard) => {
         return true;
-    }*/
+    }
     const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
         let cardNumber = event.target.value;
         setCard({ ...card, cardNumber: cardNumber});
+    }
+    const handleCardHolderChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let cardHolder = event.target.value;
+        setCard({ ...card, cardHolder: cardHolder});
+    }
+    const handleValidThruChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let validThru = { year: parseInt(event.target.value.split('-')[0]), month: parseInt(event.target.value.split('-')[1]) } as ValidDate;
+        setCard({ ...card, validThru: validThru});
+    }
+    const handleCcvChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let ccv = event.target.value;
+        setCard({ ...card, ccv: parseInt(ccv)});
+    }
+    const handleVendorChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        let vendor = event.target.value;
+        setCard({ ...card, vendor: vendor as Vendor});
     }
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -42,32 +50,30 @@ export default function CardForm() {
             }}>
                 <label className="card-form-cardnumber">
                     <p>Card number</p>
-                    <input required type="number" pattern="[0-9]{13,19}" placeholder="XXXX XXXX XXXX XXXX" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCardNumberChange(event)} />
+                    <input required type="text" pattern="[0-9]{13,19}" placeholder="XXXX XXXX XXXX XXXX" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCardNumberChange(event)} />
                 </label>
                 <label className="card-form-cardholder">
                     <p>Cardholder name</p>
-                    <input required type="text" pattern="[a-z]{3,40}" placeholder="FIRSTNAME LASTNAME" onChange={(event: ChangeEvent<HTMLInputElement>) => { setCard({ ...card, cardHolder: String(event.target.value) }) }} />
+                    <input required type="text" pattern="[a-zA-Z ]{3,40}" placeholder="FIRSTNAME LASTNAME" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCardHolderChange(event)} />
                 </label>
                 <label className="card-form-validthru">
                     <p>Valid thru</p>
-                    <input type="date" onChange={(event: ChangeEvent<HTMLInputElement>) => { setCard({...card, validThru: { year: parseInt(event.target.value.split('-')[0]), month: parseInt(event.target.value.split('-')[1]) } as ValidDate }) }} />
+                    <input required type="date" onChange={(event: ChangeEvent<HTMLInputElement>) => handleValidThruChange(event)} />
                 </label>
                 <label className="card-form-ccv">
                     <p>CCV</p>
-                    <input required type="number" placeholder="XXX" onChange={(event: ChangeEvent<HTMLInputElement>) => { setCard({...card, ccv: Number(event.target.value) }) }} />
+                    <input required type="text" pattern="[0-9]{3,4}" placeholder="XXX" onChange={(event: ChangeEvent<HTMLInputElement>) => handleCcvChange(event)} />
                 </label>
                 <label className="card-form-vendor">
                     <p>Vendor</p>
-                    <select onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                        console.log(event.target.value);
-                        setCard({ ...card, vendor: event.target.value as Vendor}) }} value={card.vendor}>
+                    <select required defaultValue="dogecoin" onChange={(event: ChangeEvent<HTMLSelectElement>) => handleVendorChange(event)}>
                         <option value="bitcoin">Bitcoin</option>
                         <option value="mastercard">Mastercard</option>
                         <option value="visa">Visa</option>
                         <option value="dogecoin">Dogecoin</option>
                     </select>
                 </label>
-                <input className="add-card-button" type="submit" value="ADD CARD" />
+                <button className="add-card-button" type="submit">ADD CARD</button>
             </form>
         </>
     );

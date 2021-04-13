@@ -6,9 +6,10 @@ import cardsReducer from './cardsSlice';
 export interface AppState {
   cardsStack: {
     cards: Array<ICard>,
-    maxCards: number
+    maxCards: number,
+    activeCardNumber: string
   };
-};    
+};
 
 export const typedUseSelector: TypedUseSelectorHook<AppState> = useSelector;
 

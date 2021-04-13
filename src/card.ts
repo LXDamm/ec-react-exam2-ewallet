@@ -11,5 +11,4 @@ export interface ICard {
     validThru: ValidDate;
     ccv: number;
     vendor: Vendor;
-    isActive: boolean;
 }
